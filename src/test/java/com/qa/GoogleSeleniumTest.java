@@ -28,6 +28,21 @@ public class GoogleSeleniumTest {
     }
 
     @Test
+    public void singleInput() throws InterruptedException {
+        driver.manage().window().maximize();
+        driver.get("https://www.seleniumeasy.com/test/basic-first-form-demo.html");
+        Thread.sleep(2000);
+        WebElement enterMessage = driver.findElementById("user-message");
+        enterMessage.sendKeys("hello");
+        Thread.sleep(5000);
+        WebElement showMessage = driver.findElement(By.xpath("//*[@id=\"get-input\"]/button"));
+        showMessage.click();
+        Thread.sleep(5000);
+
+
+    }
+
+    @Test
     public void searchTest() throws InterruptedException {
         driver.manage().window().maximize();
         driver.get("http://google.com");
@@ -42,5 +57,11 @@ public class GoogleSeleniumTest {
         WebElement linkToBiggerPicture = driver.findElementByLinkText("Images for funny cat");
         linkToBiggerPicture.click();
         Thread.sleep(5000);
+        WebElement linktoPicture = driver.findElementById("npeDyM3edUSkxM:");
+        linktoPicture.click();
+        Thread.sleep(5000);
+
+
+
     }
 }
