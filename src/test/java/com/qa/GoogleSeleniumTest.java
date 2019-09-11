@@ -139,4 +139,16 @@ public class GoogleSeleniumTest {
 
 
     }
+    @Test
+    public void selectList() throws InterruptedException {
+        driver.manage().window().maximize();
+        driver.get("https://www.seleniumeasy.com/test/basic-select-dropdown-demo.html");
+        Thread.sleep(2000);
+        WebElement checkValue = driver.findElementById("select-demo");
+        checkValue.click();
+        Thread.sleep(5000);
+        WebElement getDay = driver.findElement(By.xpath("//*[@id=\"select-demo\"]/option[3]"));
+        getDay.click();
+        Thread.sleep(5000);
+    }
 }
