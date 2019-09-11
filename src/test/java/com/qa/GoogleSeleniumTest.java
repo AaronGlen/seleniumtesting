@@ -121,4 +121,22 @@ public class GoogleSeleniumTest {
         Thread.sleep(5000);
 
     }
+    @Test
+    public void GroupRadioButtons() throws InterruptedException{
+        driver.manage().window().maximize();
+        driver.get("https://www.seleniumeasy.com/test/basic-radiobutton-demo.html");
+        Thread.sleep(2000);
+        WebElement checkGender = driver.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[2]/div[2]/div[1]/label[1]/input"));
+        checkGender.click();
+        Thread.sleep(5000);
+        WebElement checkAge = driver.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[2]/div[2]/div[2]/label[3]/input"));
+        checkAge.click();
+        Thread.sleep(5000);
+        WebElement buttonGetValues = driver.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[2]/div[2]/button"));
+        buttonGetValues.click();
+        Thread.sleep(5000);
+
+
+
+    }
 }
