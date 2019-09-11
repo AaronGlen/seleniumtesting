@@ -38,9 +38,26 @@ public class GoogleSeleniumTest {
         WebElement showMessage = driver.findElement(By.xpath("//*[@id=\"get-input\"]/button"));
         showMessage.click();
         Thread.sleep(5000);
+    }
+
+    @Test
+    public void twoInput() throws InterruptedException {
+        driver.manage().window().maximize();
+        driver.get("https://www.seleniumeasy.com/test/basic-first-form-demo.html");
+        Thread.sleep(2000);
+        WebElement enterSum1 = driver.findElementById("sum1");
+        enterSum1.sendKeys("1");
+        Thread.sleep(5000);
+        WebElement enterSum2 = driver.findElementById("sum2");
+        enterSum2.sendKeys("2");
+        Thread.sleep(5000);
+        WebElement add = driver.findElement(By.xpath("//*[@id=\"gettotal\"]/button"));
+        add.click();
+        Thread.sleep(5000);
 
 
     }
+
 
     @Test
     public void searchTest() throws InterruptedException {
@@ -62,6 +79,46 @@ public class GoogleSeleniumTest {
         Thread.sleep(5000);
 
 
+
+    }
+    @Test
+    public void singleCheckOut() throws InterruptedException{
+        driver.manage().window().maximize();
+        driver.get("https://www.seleniumeasy.com/test/basic-checkbox-demo.html");
+        Thread.sleep(2000);
+        WebElement checkBox = driver.findElementById("isAgeSelected");
+        checkBox.click();
+        Thread.sleep(5000);
+
+
+    }
+
+    @Test
+    public void multiCheckOut() throws InterruptedException{
+        driver.manage().window().maximize();
+        driver.get("https://www.seleniumeasy.com/test/basic-checkbox-demo.html");
+        Thread.sleep(2000);
+        WebElement checkAll = driver.findElementById("check1");
+        checkAll.click();
+        Thread.sleep(5000);
+        WebElement check = driver.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[2]/div[2]/div[2]/label/input"));
+        check.click();
+        Thread.sleep(5000);
+
+
+
+    }
+    @Test
+    public void checkGender() throws InterruptedException{
+        driver.manage().window().maximize();
+        driver.get("https://www.seleniumeasy.com/test/basic-radiobutton-demo.html");
+        Thread.sleep(2000);
+        WebElement checkGender = driver.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[1]/div[2]/label[1]/input"));
+        checkGender.click();
+        Thread.sleep(5000);
+        WebElement checkValue = driver.findElementById("buttoncheck");
+        checkValue.click();
+        Thread.sleep(5000);
 
     }
 }
