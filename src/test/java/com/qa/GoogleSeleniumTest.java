@@ -4,8 +4,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 
 import static org.junit.Assert.assertTrue;
 
@@ -150,5 +155,52 @@ public class GoogleSeleniumTest {
         WebElement getDay = driver.findElement(By.xpath("//*[@id=\"select-demo\"]/option[3]"));
         getDay.click();
         Thread.sleep(5000);
+    }
+
+    @Test
+    public void multiSelectList() throws InterruptedException{
+        driver.manage().window().maximize();
+        driver.get("https://www.seleniumeasy.com/test/basic-select-dropdown-demo.html");
+        Thread.sleep(2000);
+
+        Select days = new Select(driver.findElementById("multi-select"));
+
+        days.selectByValue("California");
+        days.selectByIndex(2);
+        days.selectByIndex(1);
+        Thread.sleep(5000);
+        WebElement checkValues = driver.findElementById("printAll");
+        checkValues.click();
+        Thread.sleep(5000);
+    }
+
+    @Test
+    public void dragAndDrop() throws InterruptedException{
+        driver.manage().window().maximize();
+        driver.get("https://www.seleniumeasy.com/test/drag-and-drop-demo.html");
+        Thread.sleep(2000);
+
+        WebElement drag1 = driver.findElement(By.xpath("//*[@id=\"todrag\"]/span[1]"));
+        WebElement box = driver.findElementById("mydropzone");
+        new Actions(driver).dragAndDrop(drag1, box).perform();
+        Thread.sleep(5000);
+
+    }
+
+    @Test
+    public void dragSlider() throws InterruptedException{
+        driver.manage().window().maximize();
+        driver.get("https://www.seleniumeasy.com/test/drag-drop-range-sliders-demo.html");
+        Thread.sleep(2000);
+        Actions drag = new Actions(driver);
+        WebElement slider1 = driver.findElement(By.xpath("//*[@id=\"slider1\"]/div/input"));
+        drag.dragAndDropBy(slider1, 20,0).perform();
+        Thread.sleep(2000);
+        WebElement slider2= driver.findElement(By.xpath("//*[@id=\"slider2\"]/div/input"));
+        drag.dragAndDropBy(slider2, -70,0).perform();
+        Thread.sleep(2000);
+
+
+
     }
 }
